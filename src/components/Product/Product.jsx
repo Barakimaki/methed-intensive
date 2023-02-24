@@ -1,6 +1,11 @@
 import style from './Product.module.css'
+import {useDispatch} from "react-redux";
+import {addProduct} from "../../store/order/orderSlice.js";
 
-export const Product = ({image, price, title, weight}) => {
+export const Product = ({id, image, price, title, weight}) => {
+
+    const dispatch = useDispatch()
+
     return <article className={style.product}>
         <img src={image} alt={title} className={style.image}/>
 
@@ -12,6 +17,12 @@ export const Product = ({image, price, title, weight}) => {
 
         <p className={style.weight}>{weight}г</p>
 
-        <button className={style.add} type="button">Добавить</button>
+        <button
+            className={style.add}
+            type="button"
+            onClick={()=>{
+                dispatch(addProduct({id}))
+            }}
+        >Добавить</button>
     </article>
 }
