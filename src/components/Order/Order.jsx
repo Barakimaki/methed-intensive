@@ -1,95 +1,66 @@
-import './Order.css'
-import './Goods.css'
-import './Count.css'
+import style from './Order.module.css'
+import {Good} from '../Good/Good.jsx'
+import {Count} from '../Count/Count.jsx'
 
+const orders = [{
+    id: 1,
+    image: '',
+    title: 'Супер сырный',
+    weight: 512,
+    price: 1279,
+    amount: 1
+}, {
+    id: 2,
+    image: '',
+    title: 'Картошка фри',
+    weight: 180,
+    price: 245,
+    amount: 2
+}, {
+    id: 3,
+    image: '',
+    title: 'Жгучий хот-дог',
+    weight: 245,
+    price: 239,
+    amount: 1
+}]
 
 export const Order = () => (
-    <div className="catalog__order order">
-        <section className="order__wrapper">
-            <div className="order__header" tabIndex="0" role="button">
-                <h2 className="order__title">Корзина</h2>
+        <div className={style.order}>
+            <section className={style.wrapper}>
+                <div className={style.header} tabIndex="0" role="button">
+                    <h2 className={style.title}>Корзина</h2>
 
-                <span className="order__count">4</span>
-            </div>
-
-            <div className="order__wrap_list">
-                <ul className="order__list">
-                    <li className="order__item">
-                        <img className="order__image" src="img/burger_1.jpg" alt="Супер сырный"/>
-
-                        <div className="order__goods goods">
-                            <h3 className="goods__title">Супер сырный</h3>
-
-                            <p className="goods__weight">512г</p>
-
-                            <p className="goods__price">1279
-                                <span className="currency">₽</span>
-                            </p>
-                        </div>
-
-                        <div className="count">
-                            <button className="count__minus">-</button>
-                            <p className="count__amount">1</p>
-                            <button className="count__plus">+</button>
-                        </div>
-                    </li>
-
-                    <li className="order__item">
-                        <img className="order__image" src="img/free_1.jpg" alt="Картошка фри"/>
-
-                        <div className="order__goods goods">
-                            <h3 className="goods__title">Картошка фри</h3>
-
-                            <p className="goods__weight">180г</p>
-
-                            <p className="goods__price">245
-                                <span className="currency">₽</span>
-                            </p>
-                        </div>
-
-                        <div className="count">
-                            <button className="count__minus">-</button>
-                            <p className="count__amount">2</p>
-                            <button className="count__plus">+</button>
-                        </div>
-                    </li>
-
-                    <li className="order__item">
-                        <img className="order__image" src="img/hot-dog_1.jpg" alt="Жгучий хот-дог"/>
-
-                        <div className="order__goods goods">
-                            <h3 className="goods__title">Жгучий хот-дог</h3>
-
-                            <p className="goods__weight">245г</p>
-
-                            <p className="goods__price">239
-                                <span className="currency">₽</span>
-                            </p>
-                        </div>
-
-                        <div className="count">
-                            <button className="count__minus">-</button>
-                            <p className="count__amount">1</p>
-                            <button className="count__plus">+</button>
-                        </div>
-                    </li>
-                </ul>
-
-                <div className="order__total">
-                    <p>Итого</p>
-                    <p>
-                        <span className="order__amount">1279</span>
-                        <span className="currency">₽</span>
-                    </p>
+                    <span className={style.count}>4</span>
                 </div>
 
-                <button className="order__submit">Оформить заказ</button>
+                <div className={style.wrap_list}>
+                    <ul className={style.list}>
+                        {orders.map(({id, image, title, weight, price, amount}) => <li key={id} className={style.item}>
+                                <img className={style.image} src={image} alt={title}/>
+                                <Good title={title} weight={weight} price={price}/>
+                                <Count amount={amount}/>
+                            </li>
+                        )
+                        }
+                    </ul>
 
-                <div className="order__apeal">
-                    <p className="order__text">Бесплатная доставка</p>
-                    <button className="order__close">Свернуть</button>
+                    <div className={style.total}>
+                        <p>Итого</p>
+                        <p>
+                            <span className={style.amount}>1279</span>
+                            <span className='currency'>₽</span>
+                        </p>
+                    </div>
+
+                    <button className={style.submit}>Оформить заказ</button>
+
+                    <div className={style.apeal}>
+                        <p className={style.text}>Бесплатная доставка</p>
+                        <button className={style.close}>Свернуть</button>
+                    </div>
                 </div>
-            </div>
-        </section>
-    </div>
-);
+            </section>
+        </div>
+    )
+;

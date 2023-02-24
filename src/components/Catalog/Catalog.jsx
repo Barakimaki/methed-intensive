@@ -1,113 +1,59 @@
-import './Catalog.css'
-import './Product.css'
+import style from './Catalog.module.css'
 import {Order} from "../Order/Order.jsx";
 import {Container} from "../Container/Container";
+import {Product} from "../Product/Product.jsx"
+
+const products = [{
+    id: 1,
+    image: '',
+    price: 689,
+    title: 'Мясная бомба',
+    weight: 520
+}, {
+    id: 2,
+    image: '',
+    price: 550,
+    title: 'Супер сырный',
+    weight: 512
+}, {
+    id: 3,
+    image: '',
+    price: 639,
+    title: 'Сытный',
+    weight: 580
+}, {
+    id: 4,
+    image: '',
+    price: 480,
+    title: 'Тяжелый удар',
+    weight: 470
+}, {
+    id: 5,
+    image: '',
+    price: 450,
+    title: 'Вечная классика',
+    weight: 450
+}, {
+    id: 6,
+    image: '',
+    price: 560,
+    title: 'Итальянский',
+    weight: 510
+}]
 
 export const Catalog = () => {
     return (
-        <section className="catalog">
-            <Container className="catalog__container">
+        <section className={style.catalog}>
+            <Container className={style.container}>
                 <Order/>
-                <div className="catalog__wrapper">
-                    <h2 className="catalog__title">Бургеры</h2>
-
-                    <div className="catalog__wrap_list">
-                        <ul className="catalog__list">
-                            <li className="catalog__item">
-                                <article className="product">
-                                    <img src="img/photo-5.jpg" alt="Мясная бомба" className="product__image"/>
-
-                                    <p className="product__price">689<span className="currency">₽</span></p>
-
-                                    <h3 className="product__title">
-                                        <button className="product__detail">Мясная бомба</button>
-                                    </h3>
-
-                                    <p className="product__weight">520г</p>
-
-                                    <button className="product__add" type="button">Добавить</button>
-                                </article>
-                            </li>
-
-                            <li className="catalog__item">
-                                <article className="product">
-                                    <img src="img/photo-1.jpg" alt="Супер сырный" className="product__image"/>
-
-                                    <p className="product__price">550<span className="currency">₽</span></p>
-
-                                    <h3 className="product__title">
-                                        <button className="product__detail">Супер сырный</button>
-                                    </h3>
-
-                                    <p className="product__weight">512г</p>
-
-                                    <button className="product__add" type="button">Добавить</button>
-                                </article>
-                            </li>
-
-                            <li className="catalog__item">
-                                <article className="product">
-                                    <img src="img/photo-3.jpg" alt="Сытный" className="product__image"/>
-
-                                    <p className="product__price">639<span className="currency">₽</span></p>
-
-                                    <h3 className="product__title">
-                                        <button className="product__detail">Сытный</button>
-                                    </h3>
-
-                                    <p className="product__weight">580г</p>
-
-                                    <button className="product__add" type="button">Добавить</button>
-                                </article>
-                            </li>
-
-                            <li className="catalog__item">
-                                <article className="product">
-                                    <img src="img/photo.jpg" alt="Тяжелый удар" className="product__image"/>
-
-                                    <p className="product__price">480<span className="currency">₽</span></p>
-
-                                    <h3 className="product__title">
-                                        <button className="product__detail">Тяжелый удар</button>
-                                    </h3>
-
-                                    <p className="product__weight">470г</p>
-
-                                    <button className="product__add" type="button">Добавить</button>
-                                </article>
-                            </li>
-
-                            <li className="catalog__item">
-                                <article className="product">
-                                    <img src="img/photo-2.jpg" alt="Вечная классика" className="product__image"/>
-
-                                    <p className="product__price">450<span className="currency">₽</span></p>
-
-                                    <h3 className="product__title">
-                                        <button className="product__detail">Вечная классика</button>
-                                    </h3>
-
-                                    <p className="product__weight">450г</p>
-
-                                    <button className="product__add" type="button">Добавить</button>
-                                </article>
-                            </li>
-
-                            <li className="catalog__item">
-                                <article className="product">
-                                    <img src="img/photo-4.jpg" alt="Итальянский" className="product__image"/>
-
-                                    <p className="product__price">560<span className="currency">₽</span></p>
-
-                                    <h3 className="product__title">
-                                        <button className="product__detail">Итальянский</button>
-                                    </h3>
-
-                                    <p className="product__weight">510г</p>
-
-                                    <button className="product__add" type="button">Добавить</button>
-                                </article>
-                            </li>
+                <div className={style.wrapper}>
+                    <h2 className={style.title}>Бургеры</h2>
+                    <div className={style.wrap_list}>
+                        <ul className={style.list}>
+                            {products.map(({id, price, image, title, weight}) => <li  key={id} className={style.item}>
+                                    <Product image={image} price={price} title={title} weight={weight}/>
+                                </li>
+                            )}
                         </ul>
                     </div>
                 </div>
