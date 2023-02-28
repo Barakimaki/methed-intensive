@@ -10,12 +10,12 @@ import {API_URL} from "../../../consts.js";
 export const Catalog = () => {
 
     const {products} = useSelector(state => state.product)
-    const {category ,activeCategory} = useSelector((state) => state.category)
+    const {category, activeCategory} = useSelector((state) => state.category)
 
     const dispatch = useDispatch()
 
-    useEffect(()=>{
-        if(category.length){
+    useEffect(() => {
+        if (category.length) {
             dispatch(productRequestAsync(category[activeCategory].title))
         }
     }, [category, activeCategory])
@@ -27,12 +27,18 @@ export const Catalog = () => {
                 <div className={style.wrapper}>
                     <h2 className={style.title}>{category[activeCategory]?.rus}</h2>
                     <div className={style.wrap_list}>
-                        <ul className={style.list}>
-                            {products.map(({id, price, image, title, weight}) => <li  key={id} className={style.item}>
-                                    <Product image={`${API_URL}/${image}`} id={id} price={price} title={title} weight={weight}/>
-                                </li>
-                            )}
-                        </ul>
+                        {products.length
+                            ? <ul className={style.list}>
+                                {products.map(({id, price, image, title, weight}) => <li key={id}
+                                                                                         className={style.item}>
+                                        <Product image={`${API_URL}/${image}`} id={id} price={price} title={title}
+                                                 weight={weight}/>
+                                    </li>
+                                )}
+                            </ul>
+                            : <p className={style.empty}>Товаров в данной категории нет</p>
+                        }
+
                     </div>
                 </div>
             </Container>

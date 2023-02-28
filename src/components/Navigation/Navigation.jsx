@@ -9,7 +9,7 @@ import {API_URL} from "../../../consts.js";
 export const Navigation = () => {
 
     const dispatch = useDispatch()
-    const {category, activeCategory} = useSelector((state) => state.category)
+    const {category, activeCategory} = useSelector(state => state.category)
 
     useEffect(()=>{
         dispatch(categoryRequestAsync())

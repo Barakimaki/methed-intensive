@@ -1,19 +1,24 @@
 import style from './Count.module.css'
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {useDispatch} from "react-redux";
+import {addProduct, removeProduct} from "../../store/order/orderSlice.js";
 
 
-export const Count = ({amount}) => {
+export const Count = ({amount, id}) => {
 
+    const dispatch = useDispatch()
     const [count, setCount] = useState(amount)
 
+    useEffect(()=>{
+        setCount(amount)
+    }, [amount])
+
     const addCount = () => {
-        setCount(count + 1)
+        dispatch(addProduct({id}))
     }
 
     const removeCount = () => {
-        if (count > 1) {
-            setCount(count - 1)
-        }
+            dispatch(removeProduct({id}))
     }
 
     return (

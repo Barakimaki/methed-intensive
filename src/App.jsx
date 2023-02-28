@@ -4,6 +4,7 @@ import {Catalog} from "./components/Catalog/Catalog";
 import {Footer} from "./components/Footer/Footer";
 import {store} from "./store/index.js";
 import {Provider} from "react-redux";
+import {ModalDelivery} from "./components/ModalDelivery/ModalDelivery";
 
 export const App = () => {
     return (
@@ -14,6 +15,7 @@ export const App = () => {
                 <Catalog />
             </main>
             <Footer />
+            <ModalDelivery />
         </Provider>
     )
 }

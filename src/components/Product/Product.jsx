@@ -9,7 +9,7 @@ export const Product = ({id, image, price, title, weight}) => {
     return <article className={style.product}>
         <img src={image} alt={title} className={style.image}/>
 
-        <p className={style.price}>{price}<span className="currency">₽</span></p>
+        <p className={style.price}>{price}<span className="currency">&nbsp;₽</span></p>
 
         <h3 className={style.title}>
             <button className={style.detail}>{title}</button>
